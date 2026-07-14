@@ -935,6 +935,51 @@ export const recipes: Recipe[] = [
     ],
     featured: true,
   },
+{
+  id: '24',
+  title: 'Iogurte com Granola e Frutas',
+  slug: 'iogurte-com-granola-e-frutas',
+  description:
+    'Uma tigela cremosa e refrescante com iogurte natural, frutas frescas, granola crocante e um toque de mel.',
+  image: '/assets/imagens/recipes/Uma-tigela-cremosa.jpg',
+  category: 'Café da manhã',
+  type: ['Vegetariana', 'Fitness', 'Rápida'],
+  difficulty: 'Fácil',
+  preparationTime: 10,
+  cookingTime: 0,
+  servings: 1,
+  rating: 4.7,
+  reviewCount: 46,
+  ingredients: [
+    '170 g de iogurte natural',
+    '3 colheres de sopa de granola',
+    '1 banana pequena fatiada',
+    '4 morangos fatiados',
+    '1 colher de chá de mel',
+    '1 colher de chá de sementes de chia',
+  ],
+  instructions: [
+    'Coloque o iogurte em uma tigela e espalhe com uma colher.',
+    'Distribua a banana e os morangos sobre o iogurte.',
+    'Adicione a granola e as sementes de chia.',
+    'Finalize com o mel e sirva imediatamente.',
+  ],
+  nutrition: {
+    calories: 342,
+    protein: '13g',
+    carbohydrates: '56g',
+    fat: '8g',
+  },
+  tags: [
+    'rápida',
+    'fitness',
+    'vegetariana',
+    'com frutas',
+    'com granola',
+    'sem cozimento',
+  ],
+  featured: false,
+},
 ];
 
 export const categories = [

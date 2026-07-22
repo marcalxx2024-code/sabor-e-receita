@@ -38,9 +38,11 @@ export function RecipeDetailPage() {
   }
 
   const totalTime = r.preparationTime + r.cookingTime;
-  const related = recipes.filter(
-    (x) => x.id !== r.id && (x.category === r.category || x.tags.some((t) => r.tags.includes(t)))
-  ).slice(0, 3);
+  const related = recipes
+    .filter(
+      (x) => x.id !== r.id && (x.category === r.category || x.tags.some((t) => r.tags.includes(t))),
+    )
+    .slice(0, 3);
 
   return (
     <article>
@@ -51,7 +53,11 @@ export function RecipeDetailPage() {
         </Link>
 
         <div className="mt-6 grid gap-10 lg:grid-cols-2">
-          <img src={r.image} alt={r.title} className="h-[520px] w-full rounded-[2.5rem] object-cover" />
+          <img
+            src={r.image}
+            alt={r.title}
+            className="h-[520px] w-full rounded-[2.5rem] object-cover"
+          />
 
           <div className="self-center">
             <span className="rounded-full bg-orange-100 px-4 py-2 text-sm font-bold text-orange-700">

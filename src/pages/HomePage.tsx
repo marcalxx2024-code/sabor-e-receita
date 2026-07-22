@@ -1,4 +1,15 @@
-import { ArrowRight, Search, Coffee, UtensilsCrossed, CookingPot, Cake, Salad, Soup, Wheat, CupSoda } from 'lucide-react';;
+import {
+  ArrowRight,
+  Search,
+  Coffee,
+  UtensilsCrossed,
+  CookingPot,
+  Cake,
+  Salad,
+  Soup,
+  Wheat,
+  CupSoda,
+} from 'lucide-react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { RecipeCard } from '../components/recipes/RecipeCard';
@@ -7,13 +18,13 @@ import { categories, recipes } from '../data/recipes';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 const categoryIcons: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   'Café da manhã': Coffee,
-  'Jantar': UtensilsCrossed,
-  'Almoço': CookingPot,
-  'Sobremesas': Cake,
-  'Saladas': Salad,
-  'Sopas': Soup,
-  'Massas': Wheat,
-  'Bebidas': CupSoda,
+  Jantar: UtensilsCrossed,
+  Almoço: CookingPot,
+  Sobremesas: Cake,
+  Saladas: Salad,
+  Sopas: Soup,
+  Massas: Wheat,
+  Bebidas: CupSoda,
 };
 export function HomePage() {
   useDocumentTitle('Início', 'Receitas práticas e saborosas para todos os momentos.');
@@ -72,9 +83,9 @@ export function HomePage() {
               className="rounded-3xl border border-orange-100 bg-white p-6 font-black shadow-sm transition hover:-translate-y-1 hover:border-orange-300"
             >
               {(() => {
-  const Icon = categoryIcons[c] ?? UtensilsCrossed;
-  return <Icon size={32} className="text-orange-600" />;
-})()}
+                const Icon = categoryIcons[c] ?? UtensilsCrossed;
+                return <Icon size={32} className="text-orange-600" />;
+              })()}
               <span className="mt-4 block">{c}</span>
               <span className="mt-1 block text-sm font-normal text-stone-500">
                 {recipes.filter((r) => r.category === c).length} receitas

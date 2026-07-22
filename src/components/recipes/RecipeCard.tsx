@@ -17,7 +17,7 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
   const fallbackImage =
     'data:image/svg+xml;charset=UTF-8,' +
     encodeURIComponent(
-      '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="560" viewBox="0 0 800 560"><rect width="800" height="560" fill="#fef3c7"/><rect x="40" y="40" width="720" height="480" rx="36" fill="#fff7ed" stroke="#fdba74" stroke-width="6"/><path d="M220 360h360" stroke="#f59e0b" stroke-width="20" stroke-linecap="round"/><path d="M270 250c20-45 60-70 110-70s90 25 110 70" stroke="#fb923c" stroke-width="20" stroke-linecap="round"/></svg>'
+      '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="560" viewBox="0 0 800 560"><rect width="800" height="560" fill="#fef3c7"/><rect x="40" y="40" width="720" height="480" rx="36" fill="#fff7ed" stroke="#fdba74" stroke-width="6"/><path d="M220 360h360" stroke="#f59e0b" stroke-width="20" stroke-linecap="round"/><path d="M270 250c20-45 60-70 110-70s90 25 110 70" stroke="#fb923c" stroke-width="20" stroke-linecap="round"/></svg>',
     );
 
   const handleImageError = () => {
@@ -60,7 +60,7 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
           </span>
           <span className="flex items-center gap-1">
             <Users size={16} />
-            {recipe.servings} por��es
+            {recipe.servings} porções
           </span>
           <span className="ml-auto font-semibold">{recipe.difficulty}</span>
         </div>

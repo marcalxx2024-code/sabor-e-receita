@@ -6,6 +6,5 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
     sourcemap: true,
-    minify: false,
   },
 });

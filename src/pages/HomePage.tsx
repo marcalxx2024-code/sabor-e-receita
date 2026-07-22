@@ -65,7 +65,7 @@ export function HomePage() {
       <section className="container-app py-16">
         <SectionTitle eyebrow="Explore" title="Categorias populares" />
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {categories.slice(0, 8).map((c, i) => (
+          {categories.slice(0, 8).map((c) => (
             <Link
               key={c}
               to={`/receitas?categoria=${encodeURIComponent(c)}`}

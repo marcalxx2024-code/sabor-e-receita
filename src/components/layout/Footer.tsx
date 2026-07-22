@@ -24,10 +24,10 @@ export function Footer() {
         <div>
           <h2 className="font-bold text-white">Acompanhe</h2>
           <div className="mt-3 flex gap-3">
-            <a href="https://github.com" aria-label="GitHub">
+            <a href="https://github.com/marcalxx2024-code" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <Github />
             </a>
-            <a href="https://instagram.com" aria-label="Instagram">
+            <a href="https://www.instagram.com/marcalxx_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <Instagram />
             </a>
           </div>

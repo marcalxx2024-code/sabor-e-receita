@@ -53,7 +53,19 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
           </h3>
         </Link>
         <p className="mt-2 line-clamp-2 text-sm leading-6 text-stone-600">{recipe.description}</p>
-        <div className="mt-4 flex items-center gap-4 border-t border-stone-100 pt-4 text-sm text-stone-600">
+{recipe.type.length > 0 && (
+  <div className="mt-3 flex flex-wrap gap-2">
+    {recipe.type.slice(0, 3).map((type) => (
+      <span
+        key={type}
+        className="rounded-full bg-orange-50 px-2.5 py-1 text-xs font-medium text-orange-700"
+      >
+        {type}
+      </span>
+    ))}
+  </div>
+)}
+<div className="mt-4 flex items-center gap-4 border-t border-stone-100 pt-4 text-sm text-stone-600">
           <span className="flex items-center gap-1">
             <Clock size={16} />
             {recipe.preparationTime + recipe.cookingTime} min

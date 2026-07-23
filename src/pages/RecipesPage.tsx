@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router';
 import { EmptyState } from '../components/common/EmptyState';
 import { SearchBar } from '../components/common/SearchBar';
 import { RecipeCard } from '../components/recipes/RecipeCard';
-import { categories, recipes } from '../data/recipes';
+import { categories, allTypes, recipes } from '../data/recipes';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 export function RecipesPage() {
   useDocumentTitle('Receitas', 'Pesquise e filtre todas as receitas do Sabor & Receita.');
@@ -15,6 +15,7 @@ export function RecipesPage() {
     diff = params.get('dificuldade') ?? '',
     time = params.get('tempo') ?? '',
     sort = params.get('ordem') ?? 'rating';
+    const selectedTypes = params.get('tipos')?.split(',').filter(Boolean) ?? [];
   const set = (k: string, v: string) => {
     const n = new URLSearchParams(params);
     if (v) {
@@ -24,16 +25,26 @@ export function RecipesPage() {
     }
     setParams(n);
   };
+  const toggleType = (type: string) => {
+    const next = selectedTypes.includes(type)
+      ? selectedTypes.filter((t) => t !== type)
+      : [...selectedTypes, type];
+    set('tipos', next.join(','));
+  };
   const filtered = useMemo(
     () =>
       recipes
         .filter((r) => {
           const text = `${r.title} ${r.ingredients.join(' ')}`.toLowerCase();
+          const matchesTypes =
+            selectedTypes.length === 0 || selectedTypes.some((t) => r.type.includes(t));
+
           return (
             text.includes(q.toLowerCase()) &&
             (!cat || r.category === cat) &&
             (!diff || r.difficulty === diff) &&
-            (!time || r.preparationTime + r.cookingTime <= Number(time))
+            (!time || r.preparationTime + r.cookingTime <= Number(time)) &&
+            matchesTypes
           );
         })
         .sort((a, b) =>
@@ -43,7 +54,7 @@ export function RecipesPage() {
               ? a.preparationTime + a.cookingTime - (b.preparationTime + b.cookingTime)
               : b.rating - a.rating,
         ),
-    [q, cat, diff, time, sort],
+    [q, cat, diff, time, sort, selectedTypes],
   );
   const clear = () => setParams({});
   return (
@@ -111,6 +122,28 @@ export function RecipesPage() {
                 <option value="60">Até 1 hora</option>
               </select>
             </label>
+            <div className="block text-sm font-bold">
+              Características
+              <div className="mt-2 flex flex-wrap gap-2">
+                {allTypes.map((type) => {
+                  const active = selectedTypes.includes(type);
+                  return (
+                    <button
+                      key={type}
+                      type="button"
+                      onClick={() => toggleType(type)}
+                      className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
+                        active
+                          ? 'border-orange-600 bg-orange-600 text-white'
+                          : 'border-stone-200 bg-white text-stone-700 hover:border-orange-300'
+                      }`}
+                    >
+                      {type}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
             <button
               onClick={clear}
               className="w-full rounded-full border border-orange-300 py-3 font-bold text-orange-700"

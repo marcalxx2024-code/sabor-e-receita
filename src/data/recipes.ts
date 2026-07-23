@@ -9,7 +9,7 @@ export const recipes: Recipe[] = [
     slug: 'panquecas-banana-aveia',
     description:
       'Panquecas macias, douradas e naturalmente doces, perfeitas para um café da manhã nutritivo e prático.',
-    image: img('photo-1528207776546-365bb710ee93'),
+    image: '/assets/imagens/recipes/panquecas-banana-aveia.jpg',
     category: 'Café da manhã',
     type: ['Vegetariana', 'Fitness', 'Rápida'],
     difficulty: 'Fácil',
@@ -98,7 +98,7 @@ export const recipes: Recipe[] = [
     slug: 'frango-grelhado-ervas',
     description:
       'Filés de frango dourados e suculentos, temperados com limão e ervas frescas para um almoço leve e nutritivo.',
-    image: img('photo-1532550907401-a500c9a57435'),
+    image: '/assets/imagens/recipes/frango-grelhado-ervas.jpg',
     category: 'Almoço',
     type: ['Fitness', 'Sem glúten', 'Leve'],
     difficulty: 'Fácil',
@@ -142,7 +142,7 @@ export const recipes: Recipe[] = [
     slug: 'bolo-cenoura-chocolate',
     description:
       'Um clássico brasileiro de massa fofinha e úmida, coberto com chocolate cremoso para acompanhar o café ou servir em ocasiões especiais.',
-    image: img('photo-1578985545062-69928b1d9587'),
+    image: '/assets/imagens/recipes/bolo-cenoura-chocolate.jpg',
     category: 'Sobremesas',
     type: ['Vegetariana', 'Brasileira', 'Caseira'],
     difficulty: 'Médio',
@@ -187,7 +187,7 @@ export const recipes: Recipe[] = [
     slug: 'salada-mediterranea',
     description:
       'Uma salada leve, crocante e colorida, perfeita para dias quentes ou para acompanhar refeições mais completas.',
-    image: img('photo-1540420773420-3366772f4999'),
+    image: '/assets/imagens/recipes/salada-mediterranea.jpg',
     category: 'Saladas',
     type: ['Vegetariana', 'Rápida', 'Sem glúten'],
     difficulty: 'Fácil',
@@ -231,7 +231,7 @@ export const recipes: Recipe[] = [
     slug: 'sopa-abobora-gengibre',
     description:
       'Uma sopa cremosa, aromática e reconfortante, ideal para aquecer noites frias com um toque levemente picante.',
-    image: img('photo-1547592166-23ac45744acd'),
+    image: '/assets/imagens/recipes/sopa-abobora-gengibre.jpg',
     category: 'Sopas',
     type: ['Vegana', 'Sem glúten', 'Cremosa'],
     difficulty: 'Fácil',
@@ -275,7 +275,7 @@ export const recipes: Recipe[] = [
     slug: 'macarrao-pesto',
     description:
       'Uma massa aromática e envolvente com pesto caseiro de manjericão, perfeita para uma refeição rápida e saborosa.',
-    image: img('photo-1473093295043-cdd812d0e601'),
+    image: '/assets/imagens/recipes/macarrao-ao-pesto.jpg',
     category: 'Massas',
     type: ['Vegetariana', 'Rápida', 'Caseira'],
     difficulty: 'Fácil',
@@ -319,7 +319,7 @@ export const recipes: Recipe[] = [
     slug: 'tacos-legumes',
     description:
       'Tacos crocantes e coloridos, recheados com legumes assados e abacate cremoso para um jantar leve e descontraído.',
-    image: img('photo-1551504734-5ee1c4a1479b'),
+    image: '/assets/imagens/recipes/tacos-legumes-assados.jpg',
     category: 'Jantar',
     type: ['Vegana', 'Leve', 'Caseira'],
     difficulty: 'Médio',
@@ -365,7 +365,7 @@ export const recipes: Recipe[] = [
     slug: 'smoothie-frutas-vermelhas',
     description:
       'Uma bebida gelada, cremosa e frutada, perfeita para um café da manhã rápido ou um lanche refrescante.',
-    image: img('photo-1505252585461-04db1eb84625'),
+    image: '/assets/imagens/recipes/smoothie-frutas-vermelhas.jpg',
     category: 'Bebidas',
     type: ['Vegetariana', 'Rápida', 'Cremosa'],
     difficulty: 'Fácil',
@@ -407,7 +407,7 @@ export const recipes: Recipe[] = [
     slug: 'bruschetta-tomate',
     description:
       'Fatias crocantes de pão italiano cobertas com tomates frescos e manjericão, ideais para servir como entrada ou lanche.',
-    image: img('photo-1572695157366-5e585ab2b69f'),
+    image: '/assets/imagens/recipes/bruschetta-tomate-manjericao.jpg',
     category: 'Lanches',
     type: ['Vegetariana', 'Rápida', 'Caseira'],
     difficulty: 'Fácil',
@@ -452,7 +452,7 @@ export const recipes: Recipe[] = [
     slug: 'lasanha-berinjela',
     description:
       'Camadas macias de berinjela com molho de tomate encorpado e queijo gratinado, ideais para um almoço vegetariano e reconfortante.',
-    image: img('photo-1574894709920-11b28e7367e3'),
+    image: '/assets/imagens/recipes/lasanha-berinjela.jpg',
     category: 'Massas',
     type: ['Vegetariana', 'Sem glúten', 'Caseira'],
     difficulty: 'Médio',
@@ -498,7 +498,7 @@ export const recipes: Recipe[] = [
     slug: 'cookies-chocolate',
     description:
       'Cookies com bordas crocantes, centro macio e gotas de chocolate derretidas, perfeitos para acompanhar café ou servir no lanche.',
-    image: img('photo-1499636136210-6f4ee915583e'),
+    image: '/assets/imagens/recipes/cookies-chocolate.jpg',
     category: 'Sobremesas',
     type: ['Vegetariana', 'Caseira', 'Rápida'],
     difficulty: 'Fácil',
@@ -544,7 +544,7 @@ export const recipes: Recipe[] = [
     slug: 'omelete-espinafre',
     description:
       'Uma omelete leve e dourada, recheada com espinafre macio e queijo branco, ideal para um café da manhã nutritivo.',
-    image: img('photo-1510693206972-df098062cb71'),
+    image: '/assets/imagens/recipes/omelete-espinafre.jpg',
     category: 'Café da manhã',
     type: ['Fitness', 'Sem glúten', 'Rápida'],
     difficulty: 'Fácil',
@@ -587,7 +587,7 @@ export const recipes: Recipe[] = [
     slug: 'quibe-abobora',
     description:
       'Um quibe vegetariano macio por dentro e dourado por fora, perfeito para um almoço leve com sabores aromáticos.',
-    image: img('photo-1547592180-85f173990554'),
+    image: '/assets/imagens/recipes/quibe-assado-abobora.jpg',
     category: 'Almoço',
     type: ['Vegana', 'Caseira', 'Assada'],
     difficulty: 'Médio',
@@ -632,7 +632,7 @@ export const recipes: Recipe[] = [
     slug: 'hamburguer-artesanal',
     description:
       'Um hambúrguer alto e suculento, servido com queijo derretido e cebola caramelizada em um pão macio e dourado.',
-    image: img('photo-1568901346375-23c9450c58cd'),
+    image: '/assets/imagens/recipes/hamburguer-artesanal.jpg',
     category: 'Lanches',
     type: ['Caseira', 'Prática'],
     difficulty: 'Médio',
@@ -678,7 +678,7 @@ export const recipes: Recipe[] = [
     slug: 'moqueca-banana',
     description:
       'Uma moqueca vegana cremosa e aromática, com banana-da-terra macia, leite de coco e o sabor marcante do dendê.',
-    image: img('photo-1601050690597-df0568f70950'),
+    image: '/assets/imagens/recipes/moqueca-banana-da-terra.jpg',
     category: 'Almoço',
     type: ['Vegana', 'Sem glúten', 'Brasileira'],
     difficulty: 'Médio',
@@ -724,7 +724,7 @@ export const recipes: Recipe[] = [
     slug: 'pao-queijo-frigideira',
     description:
       'Um pão de queijo macio por dentro e dourado por fora, ideal para um lanche rápido e quentinho.',
-    image: img('photo-1573140401552-3fab0b24306f'),
+    image: '/assets/imagens/recipes/pao-de-queijo-frigideira.jpg',
     category: 'Lanches',
     type: ['Vegetariana', 'Sem glúten', 'Rápida'],
     difficulty: 'Fácil',
@@ -767,7 +767,7 @@ export const recipes: Recipe[] = [
     slug: 'chili-vegetariano',
     description:
       'Um chili encorpado, aromático e levemente picante, perfeito para um jantar nutritivo e reconfortante.',
-    image: img('photo-1574484284002-952d92456975'),
+    image: '/assets/imagens/recipes/chili-vegetariano.jpg',
     category: 'Jantar',
     type: ['Vegana', 'Sem glúten', 'Nutritiva'],
     difficulty: 'Fácil',
@@ -857,7 +857,7 @@ export const recipes: Recipe[] = [
     slug: 'agua-saborizada',
     description:
       'Uma bebida leve e refrescante, com frutas cítricas, hortelã e gengibre para hidratar nos dias mais quentes.',
-    image: img('photo-1556881286-fc6915169721'),
+    image: '/assets/imagens/recipes/agua-saborizada-citrica.jpg',
     category: 'Bebidas',
     type: ['Vegana', 'Sem glúten', 'Rápida'],
     difficulty: 'Fácil',

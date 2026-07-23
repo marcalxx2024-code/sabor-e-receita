@@ -1,5 +1,5 @@
 import { SlidersHorizontal, X } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router';
 import { EmptyState } from '../components/common/EmptyState';
 import { SearchBar } from '../components/common/SearchBar';
@@ -8,42 +8,60 @@ import { categories, allTypes, recipes } from '../data/recipes';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 export function RecipesPage() {
   useDocumentTitle('Receitas', 'Pesquise e filtre todas as receitas do Sabor & Receita.');
+
   const [params, setParams] = useSearchParams();
   const [showFilters, setShowFilters] = useState(false);
-  const q = params.get('q') ?? '',
-    cat = params.get('categoria') ?? '',
-    diff = params.get('dificuldade') ?? '',
-    time = params.get('tempo') ?? '',
-    sort = params.get('ordem') ?? 'rating';
-    const selectedTypes = params.get('tipos')?.split(',').filter(Boolean) ?? [];
-  const set = (k: string, v: string) => {
-    const n = new URLSearchParams(params);
-    if (v) {
-      n.set(k, v);
+
+  const RECIPES_PER_LOAD = 12;
+  const [visibleCount, setVisibleCount] = useState(RECIPES_PER_LOAD);
+
+  const q = params.get('q') ?? '';
+  const cat = params.get('categoria') ?? '';
+  const diff = params.get('dificuldade') ?? '';
+  const time = params.get('tempo') ?? '';
+  const sort = params.get('ordem') ?? 'rating';
+
+  const selectedTypesParam = params.get('tipos') ?? '';
+
+  const selectedTypes = useMemo(
+    () => selectedTypesParam.split(',').filter(Boolean),
+    [selectedTypesParam],
+  );
+
+  const set = (key: string, value: string) => {
+    const nextParams = new URLSearchParams(params);
+
+    if (value) {
+      nextParams.set(key, value);
     } else {
-      n.delete(k);
+      nextParams.delete(key);
     }
-    setParams(n);
+
+    setParams(nextParams);
   };
+
   const toggleType = (type: string) => {
-    const next = selectedTypes.includes(type)
-      ? selectedTypes.filter((t) => t !== type)
+    const nextTypes = selectedTypes.includes(type)
+      ? selectedTypes.filter((selectedType) => selectedType !== type)
       : [...selectedTypes, type];
-    set('tipos', next.join(','));
+
+    set('tipos', nextTypes.join(','));
   };
+
   const filtered = useMemo(
     () =>
       recipes
-        .filter((r) => {
-          const text = `${r.title} ${r.ingredients.join(' ')}`.toLowerCase();
+        .filter((recipe) => {
+          const text = `${recipe.title} ${recipe.ingredients.join(' ')}`.toLowerCase();
+
           const matchesTypes =
-            selectedTypes.length === 0 || selectedTypes.some((t) => r.type.includes(t));
+            selectedTypes.length === 0 || selectedTypes.some((type) => recipe.type.includes(type));
 
           return (
             text.includes(q.toLowerCase()) &&
-            (!cat || r.category === cat) &&
-            (!diff || r.difficulty === diff) &&
-            (!time || r.preparationTime + r.cookingTime <= Number(time)) &&
+            (!cat || recipe.category === cat) &&
+            (!diff || recipe.difficulty === diff) &&
+            (!time || recipe.preparationTime + recipe.cookingTime <= Number(time)) &&
             matchesTypes
           );
         })
@@ -56,7 +74,15 @@ export function RecipesPage() {
         ),
     [q, cat, diff, time, sort, selectedTypes],
   );
+
+  useEffect(() => {
+    setVisibleCount(RECIPES_PER_LOAD);
+  }, [q, cat, diff, time, sort, selectedTypesParam]);
+
   const clear = () => setParams({});
+
+  const visibleRecipes = filtered.slice(0, visibleCount);
+
   return (
     <section className="container-app py-12">
       <div className="max-w-2xl">
@@ -131,6 +157,7 @@ export function RecipesPage() {
                     <button
                       key={type}
                       type="button"
+                      aria-pressed={active}
                       onClick={() => toggleType(type)}
                       className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
                         active
@@ -176,14 +203,26 @@ export function RecipesPage() {
             </div>
           </div>
           <p className="my-6 text-sm font-semibold text-stone-600">
-            {filtered.length} receita(s) encontrada(s)
+            exibindo {Math.min(visibleCount, filtered.length)} de {filtered.length} receita(s)
           </p>
           {filtered.length ? (
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {filtered.map((r) => (
-                <RecipeCard key={r.id} recipe={r} />
-              ))}
-            </div>
+            <>
+              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {visibleRecipes.map((r) => (
+                  <RecipeCard key={r.id} recipe={r} />
+                ))}
+              </div>
+              {visibleCount < filtered.length && (
+                <div className="mt-8 flex justify-center">
+                  <button
+                    onClick={() => setVisibleCount((c) => c + RECIPES_PER_LOAD)}
+                    className="rounded-full border border-orange-300 px-6 py-3 font-bold text-orange-700"
+                  >
+                    Carregar mais ({filtered.length - visibleCount} restantes)
+                  </button>
+                </div>
+              )}
+            </>
           ) : (
             <EmptyState />
           )}
